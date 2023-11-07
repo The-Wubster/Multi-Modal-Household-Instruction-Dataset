@@ -139,7 +139,7 @@ def return_accuracies(actual_class, predicted_class):
     return in_acc, ob_acc, overall_acc
 
 # Function to calculate accuraccies for seen, unseen and combined sections of data:
-def return_accuracies_complete(actual_class, predicted_class, unseen_indices, num_query):
+def return_accuracies_complete(actual_class, predicted_class, unseen_indices, num_query, num_classes):
     object_correct_unseen = 0
     instruct_correct_unseen = 0
     overall_correct_unseen = 0
@@ -148,29 +148,29 @@ def return_accuracies_complete(actual_class, predicted_class, unseen_indices, nu
     overall_correct_seen = 0
     total = len(predicted_class)
     # Required to change line of code below if test set changes from standard 105 classes:
-    num_unseen = len(unseen_indices) * int(round(total / num_query))
+    num_unseen = len(unseen_indices) * int(round(total / num_query)) * (round(total / num_classes))
     num_seen = total - num_unseen
 
     for idx, val in enumerate(predicted_class):
         flag = 0
-        if idx in unseen_indices:
-            if val[0] == actual_class[idx][0]:
+        if (idx % num_classes) in unseen_indices:
+            if val[0] == actual_class[idx % num_classes][0]:
                 instruct_correct_unseen += 1
                 flag += 1
             else: 
-                print(str(idx) + "    Incorrect instruct: Predicted instruct: " + str(val[0]) + " Actual instruct: " + str(actual_class[idx][0]))
-            if val[1] == actual_class[idx][1]:
+                print(str(idx) + "    Incorrect instruct: Predicted instruct: " + str(val[0]) + " Actual instruct: " + str(actual_class[idx % num_classes][0]))
+            if val[1] == actual_class[idx % num_classes][1]:
                 object_correct_unseen += 1
                 flag += 1
             else: 
-                print(str(idx) + "    Incorrect object: Predicted object: " + str(val[1]) + " Actual object: " + str(actual_class[idx][1]))
+                print(str(idx) + "    Incorrect object: Predicted object: " + str(val[1]) + " Actual object: " + str(actual_class[idx % num_classes][1]))
             if flag == 2:
                 overall_correct_unseen += 1
         else:
-            if val[0] == actual_class[idx][0]:
+            if val[0] == actual_class[idx % num_classes][0]:
                 instruct_correct_seen += 1
                 flag += 1
-            if val[1] == actual_class[idx][1]:
+            if val[1] == actual_class[idx % num_classes][1]:
                 object_correct_seen += 1
                 flag += 1
             if flag == 2:
@@ -182,8 +182,8 @@ def return_accuracies_complete(actual_class, predicted_class, unseen_indices, nu
    
     return in_acc, ob_acc, overall_acc
 
-def remove_select(list_indices, indice_list, list_to_alter):
-    indices_to_remove = [idx for idx, val in enumerate(indice_list) if val in list_indices]
+def remove_select(list_indices, indice_list, list_to_alter, num_classes):
+    indices_to_remove = [idx for idx, val in enumerate(indice_list) if (val % num_classes) in list_indices]
     altered_indice_list = [indice_list[idx] for idx in range(len(indice_list)) if idx not in indices_to_remove]
     altered_list = [list_to_alter[idx] for idx in range(len(list_to_alter)) if idx not in indices_to_remove]
 
