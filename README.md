@@ -2,12 +2,12 @@
 In this repository, we provide code for the data-capturing application we developed in tkinter, the model scripts, utility files and links to the datasets.
 
 ## Introduction
-This repository contains the code and links to the datasets used in a report titled,  ``Multi-modal Few-shot Learning in a Household Robot". In the project a multi-modal household robotic system was developed which allows a user to interact with common household objects in a language of their choice by giving a robot a simple instruction to complete. The system was designed to perform well on lower-resource languages. As part of this project, we also collected a dataset of paired images and speech recordings where the verbal instruction is invoked by the user being shown a visual stimulus. The links to the speech and vision datasets are added later on. 
+This repository contains the code and links to the datasets used in a report titled,  "Multi-modal Few-shot Learning in a Household Robot". In the project a multi-modal household robotic system was developed which allows a user to interact with common household objects in a language of their choice by giving a robot a simple instruction to complete. The system was designed to perform well on lower-resource languages. As part of this project, we also collected a dataset of paired images and speech recordings where the verbal instruction is invoked by the user being shown a visual stimulus. The links to the speech and vision datasets are added later on. 
 
 ## Description
 ### bound_box_test
 
-### Files beginning with ``complete"
+### Files beginning with "complete"
 
 ### generate_questions
 
