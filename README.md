@@ -23,9 +23,9 @@ The process used in these scripts can be summarised as follows:
 5. Calculate and print prediction accuracy, and save the results in a CSV file. The code can handle both "unseen" and "seen" scenarios and records the number of times the predicted speech object class was not present in the image.
 
 The models used in these scripts are based on code in the following repositories:
-- [Named Link](https://github.com/kamperh/speech_dtw.git "DTW for Speech Processing")
-- [Named Link](http://www.google.fr/](https://github.com/bshall/knn-vc.git) "Voice Conversion With Just Nearest Neighbors")
-- [Named Link](http://www.google.fr/](https://github.com/bshall/soft-vc.git) "Soft Speech Units for Improved Voice Conversion")
+- [DTW for Speech Processing](https://github.com/kamperh/speech_dtw.git "DTW for Speech Processing")
+- [Voice Conversion With Just Nearest Neighbors](http://www.google.fr/](https://github.com/bshall/knn-vc.git) "Voice Conversion With Just Nearest Neighbors")
+- [Soft Speech Units for Improved Voice Conversion](http://www.google.fr/](https://github.com/bshall/soft-vc.git) "Soft Speech Units for Improved Voice Conversion")
 
 ### generate_questions
 This script generates a set of questions based on data from a CSV file. It imports necessary libraries, reads the data, and then iterates through the data to create questions by combining instructions and class names. The programme ensures that all questions are unique and then saves the generated questions to a new CSV file called "instructions.csv."
@@ -53,7 +53,7 @@ The code can be summarised with the following steps:
 This Python code defines a set of functions for the "complete..." scripts and allows for the extraction and mapping of instructions and objects to unique IDs and the reverse process as well. Additionally, it provides functions to calculate accuracies and breakdowns for seen and unseen data sections. The code also includes a function for generating bar plots to visualize the distribution of unique elements in a list. These functions are designed for data processing and analysis.
 
 ### vad_audio_process
-This code is designed to remove silence from audio files stored in a directory. It uses the Silero VAD (Voice Activity Detection) model to extract speech segments from audio files. The code reads audio files, applies the VAD model to detect speech, and then saves the extracted speech segments into a new directory. The performs this process for each file in the provided folder. The original work can be found at [Named Link](https://github.com/snakers4/silero-vad.git "Silero VAD").
+This code is designed to remove silence from audio files stored in a directory. It uses the Silero VAD (Voice Activity Detection) model to extract speech segments from audio files. The code reads audio files, applies the VAD model to detect speech, and then saves the extracted speech segments into a new directory. The performs this process for each file in the provided folder. The original work can be found at [Silero VAD](https://github.com/snakers4/silero-vad.git "Silero VAD").
 
 ## Dataset and Model Weights
 The vision dataset and weights of the top 5 YOLO models implemented in this project can be found at: https://drive.google.com/drive/folders/10hJtw0Jq2xcDIj-gWoOCALfQXy7sF56H?usp=share_link
