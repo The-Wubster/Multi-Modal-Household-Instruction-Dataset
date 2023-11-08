@@ -24,8 +24,8 @@ The process used in these scripts can be summarised as follows:
 
 The models used in these scripts are based on code in the following repositories:
 - [DTW for Speech Processing](https://github.com/kamperh/speech_dtw.git "DTW for Speech Processing")
-- [Voice Conversion With Just Nearest Neighbors](http://www.google.fr/](https://github.com/bshall/knn-vc.git) "Voice Conversion With Just Nearest Neighbors")
-- [Soft Speech Units for Improved Voice Conversion](http://www.google.fr/](https://github.com/bshall/soft-vc.git) "Soft Speech Units for Improved Voice Conversion")
+- [Voice Conversion With Just Nearest Neighbors](https://github.com/bshall/knn-vc.git "Voice Conversion With Just Nearest Neighbors")
+- [Soft Speech Units for Improved Voice Conversion](https://github.com/bshall/soft-vc.git "Soft Speech Units for Improved Voice Conversion")
 
 ### generate_questions
 This script generates a set of questions based on data from a CSV file. It imports necessary libraries, reads the data, and then iterates through the data to create questions by combining instructions and class names. The programme ensures that all questions are unique and then saves the generated questions to a new CSV file called "instructions.csv."
