@@ -150,7 +150,6 @@ if num_classes == 105:
 elif num_classes == 50:
     indices_to_remove = [2, 9, 22, 27, 39, 42, 45]
     image_list = ['IMG_0005.jpeg', 'IMG_0006.jpeg', 'IMG_0354.jpeg', 'IMG_0029.jpeg', 'IMG_0043.jpeg', 'IMG_0015.jpeg', 'IMG_0405.jpeg', 'IMG_0324.jpeg', 'IMG_0391.jpeg', 'IMG_0030.jpeg', 'IMG_0369.jpeg', 'IMG_0037.jpeg', 'IMG_0169.jpeg', 'IMG_0016.jpeg', 'IMG_0048.jpeg', 'IMG_0017.jpeg', 'IMG_0200.jpeg', 'IMG_5029.jpeg', 'IMG_0406.jpeg', 'IMG_0034.jpeg', 'IMG_0018.jpeg', 'IMG_0140.jpeg', 'IMG_0021.jpeg', 'IMG_5049.jpeg', 'IMG_5050.jpeg', 'IMG_0035.jpeg', 'IMG_5038.jpeg', 'IMG_0011.jpeg', 'IMG_0038.jpeg', 'IMG_0022.jpeg', 'IMG_0360.jpeg', 'IMG_0382.jpeg', 'IMG_0031.jpeg', 'IMG_0039.jpeg', 'IMG_0364.jpeg', 'IMG_0032.jpeg', 'IMG_0373.jpeg', 'IMG_5030.jpeg', 'IMG_0045.jpeg', 'IMG_0361.jpeg', 'IMG_0355.jpeg', 'IMG_5017.jpeg', 'IMG_0141.jpeg', 'IMG_0028.jpeg', 'IMG_0033.jpeg', 'IMG_0365.jpeg', 'IMG_0040.jpeg', 'IMG_0325.jpeg', 'IMG_5031.jpeg', 'IMG_0051.jpeg']
-    #image_list = ['IMG_0005.jpeg', 'IMG_0006.jpeg', 'IMG_0354.jpeg', 'IMG_0029.jpeg', 'IMG_0043.jpeg', 'IMG_0015.jpeg', 'IMG_0405.jpeg', 'IMG_0324.jpeg', 'IMG_0391.jpeg', 'IMG_0030.jpeg', 'IMG_0369.jpeg', 'IMG_0037.jpeg', 'IMG_0169.jpeg', 'IMG_0016.jpeg', 'IMG_0048.jpeg', 'IMG_0017.jpeg', 'IMG_0200.jpeg', 'IMG_5029.jpeg', 'IMG_0406.jpeg', 'IMG_0034.jpeg', 'IMG_0018.jpeg', 'IMG_0140.jpeg', 'IMG_0021.jpeg', 'IMG_5049.jpeg', 'IMG_5050.jpeg', 'IMG_0035.jpeg', 'IMG_5038.jpeg', 'IMG_0011.jpeg', 'IMG_0038.jpeg', 'IMG_0022.jpeg', 'IMG_0360.jpeg', 'IMG_0382.jpeg', 'IMG_0031.jpeg', 'IMG_0039.jpeg', 'IMG_0364.jpeg', 'IMG_0032.jpeg', 'IMG_0373.jpeg', 'IMG_5030.jpeg', 'IMG_0045.jpeg', 'IMG_0361.jpeg', 'IMG_0355.jpeg', 'IMG_5017.jpeg', 'IMG_0141.jpeg', 'IMG_0028.jpeg', 'IMG_0033.jpeg', 'IMG_0365.jpeg', 'IMG_0040.jpeg', 'IMG_0325.jpeg', 'IMG_5031.jpeg', 'IMG_0051.jpeg', 'IMG_0005.jpeg', 'IMG_0006.jpeg', 'IMG_0354.jpeg', 'IMG_0029.jpeg', 'IMG_0043.jpeg', 'IMG_0015.jpeg', 'IMG_0405.jpeg', 'IMG_0324.jpeg', 'IMG_0391.jpeg', 'IMG_0030.jpeg', 'IMG_0369.jpeg', 'IMG_0037.jpeg', 'IMG_0169.jpeg', 'IMG_0016.jpeg', 'IMG_0048.jpeg', 'IMG_0017.jpeg', 'IMG_0200.jpeg', 'IMG_5029.jpeg', 'IMG_0406.jpeg', 'IMG_0034.jpeg', 'IMG_0018.jpeg', 'IMG_0140.jpeg', 'IMG_0021.jpeg', 'IMG_5049.jpeg', 'IMG_5050.jpeg', 'IMG_0035.jpeg', 'IMG_5038.jpeg', 'IMG_0011.jpeg', 'IMG_0038.jpeg', 'IMG_0022.jpeg', 'IMG_0360.jpeg', 'IMG_0382.jpeg', 'IMG_0031.jpeg', 'IMG_0039.jpeg', 'IMG_0364.jpeg', 'IMG_0032.jpeg', 'IMG_0373.jpeg', 'IMG_5030.jpeg', 'IMG_0045.jpeg', 'IMG_0361.jpeg', 'IMG_0355.jpeg', 'IMG_5017.jpeg', 'IMG_0141.jpeg', 'IMG_0028.jpeg', 'IMG_0033.jpeg', 'IMG_0365.jpeg', 'IMG_0040.jpeg', 'IMG_0325.jpeg', 'IMG_5031.jpeg', 'IMG_0051.jpeg']
     class_file = open("./instruction_files/instructions_tuple_50.csv", "r")
 else: 
     print("Please enter a valid number of classes.")
@@ -197,7 +196,6 @@ instruct_dict = {df_instructs[idx]: instruct_sums[idx] for idx in range(len(df_i
 instruct_probs = [instruct_dict[val] for val in unique_instructs] 
 
 #========================================================================================================================#
-# Temporary
 if first_time == True:
     # Extracting features from signals:
     query_mfcc, train_mfcc = get_recordings(query_recordings_folder, train_recordings_folder)
@@ -265,6 +263,7 @@ for idx, curr_query in tqdm(enumerate(query_mfcc)):
     temp_array = np.array(dtw_costs)
     temp_array = temp_array.reshape(temp_array.shape[1])
 
+    # Application of rules
     if only_inst_in_im == True:
         temp_array_2 = train_class[np.argsort(temp_array)]
         if only_inst_for_ob == True:
@@ -306,7 +305,6 @@ for idx, curr_query in tqdm(enumerate(query_mfcc)):
         predicted_classes.append((predicted_instruct_temp[0], final_predicted_object))
     else:
         predicted_classes.append((predicted_instruct_temp[0], predicted_object_temp[0]))
-
 
 # Calculating percentage of correct predictions:
 if unseen == False:
